@@ -30,6 +30,7 @@ class ForgotPasswordController extends GetxController {
         if (passwordChangeModel.success == true) {
           // Password changed successfully
           Get.snackbar('Success', passwordChangeModel.message.toString());
+          Get.offNamed(AppRoutes.loginscreenScreen);
         } else {
           // Password change failed
           Get.snackbar('Error', passwordChangeModel.message.toString());

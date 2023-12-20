@@ -10,6 +10,5 @@ class ForgotPasswordpageController extends GetxController {
       required String otp,
       required String newPassword}) async {
     forgotcontroller.changePassword(email, otp, newPassword);
-    
   }
 }

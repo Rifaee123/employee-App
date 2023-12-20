@@ -321,10 +321,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-
-    addTablerow(
-        loginController.fetchdata.value.data!.tablerow as List<Tablerows>);
-    log(tablerow[0].price.toString());
+    if (loginController.fetchdata.value.data!.tablerow!.isNotEmpty) {
+      addTablerow(
+          loginController.fetchdata.value.data!.tablerow as List<Tablerows>);
+      log(tablerow[0].price.toString());
+    }
   }
 
   List<Tablerows> tablerow = [];
@@ -363,16 +364,19 @@ class _MyHomePageState extends State<MyHomePage> {
           //     );
           //   }).toList(),
           // ),
-          ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: tablerow.length,
-            itemBuilder: (context, index) => _buildReceiveDollar(
-                salaryComponets: tablerow[index].salaryComponent.toString(),
-                backArrow: ImageConstant.imgBackArrow29x29,
-                index: index,
-                data: tablerow),
-          ),
+          tablerow.isEmpty
+              ? Text("No Data")
+              : ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: tablerow.length,
+                  itemBuilder: (context, index) => _buildReceiveDollar(
+                      salaryComponets:
+                          tablerow[index].salaryComponent.toString(),
+                      backArrow: ImageConstant.imgBackArrow29x29,
+                      index: index,
+                      data: tablerow),
+                ),
           SizedBox(height: 50.v),
         ],
       ),
@@ -388,7 +392,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Column(
         children: [
           SizedBox(
-            height: 377.v,
+            height: 87.v,
             width: 333.h,
             child: Stack(
               alignment: Alignment.topCenter,
@@ -396,182 +400,186 @@ class _MyHomePageState extends State<MyHomePage> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 2.h),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 13.h,
-                      vertical: 28.v,
-                    ),
                     decoration: AppDecoration.outlinePrimary1.copyWith(
                       borderRadius: BorderRadiusStyle.customBorderBL20,
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 3.h),
-                          child: Text(
-                            "lbl_salary_details".tr,
-                            style: theme.textTheme.titleSmall,
-                          ),
-                        ),
-                        SizedBox(height: 7.v),
-                        Padding(
-                          padding: EdgeInsets.only(left: 3.h),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(bottom: 1.v, right: 8.h),
-                                child: Text(
-                                  "lbl_employee_type".tr,
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                              ),
-                              Text(
-                                loginController
-                                    .fetchdata.value.data!.employeetype
-                                    .toString(),
-                                style: CustomTextStyles.bodyLargeGray60003,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 5.v),
-                        Padding(
-                          padding: EdgeInsets.only(left: 3.h),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 1.v),
-                                child: Text(
-                                  "msg_date_of_joining".tr,
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 5.h),
-                                child: Text(
-                                  loginController
-                                      .fetchdata.value.data!.dateOfJoining
-                                      .toString(),
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 7.v),
-                        Padding(
-                          padding: EdgeInsets.only(left: 3.h),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 1.v),
-                                child: Text(
-                                  "lbl_basic_salary".tr,
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 8.h),
-                                child: Text(
-                                  loginController
-                                      .fetchdata.value.data!.basicSalary
-                                      .toString(),
-                                  style: CustomTextStyles.bodyLargeGray60003,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 5.v),
-                        Padding(
-                          padding: EdgeInsets.only(left: 3.h),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 1.v),
-                                child: Text(
-                                  "msg_percentage_value".tr,
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 8.h),
-                                child: Text(
-                                  loginController.fetchdata.value.data!
-                                      .tablerow![index].percentage
-                                      .toString(),
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 7.v),
-                        Padding(
-                          padding: EdgeInsets.only(left: 3.h),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 1.v),
-                                child: Text(
-                                  "msg_salary_componets2".tr,
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 5.h),
-                                child: Text(
-                                  loginController.fetchdata.value.data!
-                                      .tablerow![index].salaryComponent
-                                      .toString(),
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 21.v),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 72.h),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 10.h,
-                              vertical: 13.v,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 3.h),
+                            child: Text(
+                              "lbl_salary_details".tr,
+                              style: theme.textTheme.titleSmall,
                             ),
-                            decoration: AppDecoration.outlinePrimary1.copyWith(
-                              borderRadius: BorderRadiusStyle.roundedBorder10,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                          ),
+                          SizedBox(height: 7.v),
+                          // Padding(
+                          //   padding: EdgeInsets.only(left: 3.h),
+                          //   child: Row(
+                          //     children: [
+                          //       Padding(
+                          //         padding:
+                          //             EdgeInsets.only(bottom: 1.v, right: 8.h),
+                          //         child: Text(
+                          //           "lbl_employee_type".tr,
+                          //           style: theme.textTheme.bodyMedium,
+                          //         ),
+                          //       ),
+                          //       Text(
+                          //         loginController
+                          //             .fetchdata.value.data!.employeetype
+                          //             .toString(),
+                          //         style: CustomTextStyles.bodyLargeGray60003,
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          // SizedBox(height: 5.v),
+                          // Padding(
+                          //   padding: EdgeInsets.only(left: 3.h),
+                          //   child: Row(
+                          //     children: [
+                          //       Padding(
+                          //         padding: EdgeInsets.only(top: 1.v),
+                          //         child: Text(
+                          //           "msg_date_of_joining".tr,
+                          //           style: theme.textTheme.bodyMedium,
+                          //         ),
+                          //       ),
+                          //       Padding(
+                          //         padding: EdgeInsets.only(left: 5.h),
+                          //         child: Text(
+                          //           loginController
+                          //               .fetchdata.value.data!.dateOfJoining
+                          //               .toString(),
+                          //           style: theme.textTheme.bodyMedium,
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          // SizedBox(height: 7.v),
+                          // Padding(
+                          //   padding: EdgeInsets.only(left: 3.h),
+                          //   child: Row(
+                          //     children: [
+                          //       Padding(
+                          //         padding: EdgeInsets.only(top: 1.v),
+                          //         child: Text(
+                          //           "lbl_basic_salary".tr,
+                          //           style: theme.textTheme.bodyMedium,
+                          //         ),
+                          //       ),
+                          //       Padding(
+                          //         padding: EdgeInsets.only(left: 8.h),
+                          //   child: Text(
+                          //     loginController
+                          //         .fetchdata.value.data!.basicSalary
+                          //         .toString(),
+                          //     style: CustomTextStyles.bodyLargeGray60003,
+                          //   ),
+                          // ),
+                          //     ],
+                          //   ),
+                          // ),
+                          SizedBox(height: 5.v),
+                          Padding(
+                            padding: EdgeInsets.only(left: 3.h),
+                            child: Row(
                               children: [
-                                Text(
-                                  "lbl_total_salary".tr,
-                                  style: CustomTextStyles
-                                      .titleMediumPrimaryContainer,
+                                Padding(
+                                  padding: EdgeInsets.only(top: 1.v),
+                                  child: Text(
+                                    "msg_percentage_value".tr,
+                                    style: theme.textTheme.bodyMedium,
+                                  ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 6.h),
+                                  padding: EdgeInsets.only(left: 8.h),
                                   child: Text(
-                                    loginController
-                                        .fetchdata.value.data!.totalSalary
-                                        .toString(),
-                                    style: CustomTextStyles
-                                        .titleMediumPrimaryContainer,
+                                    loginController.fetchdata.value.data!
+                                                .tablerow![index].percentage ==
+                                            null
+                                        ? loginController.fetchdata.value.data!
+                                            .tablerow![index].value
+                                            .toString()
+                                        : loginController.fetchdata.value.data!
+                                            .tablerow![index].percentage
+                                            .toString(),
+                                    style: theme.textTheme.bodyMedium,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                        SizedBox(height: 3.v),
-                      ],
+                          SizedBox(height: 7.v),
+                          // Padding(
+                          //   padding: EdgeInsets.only(left: 3.h),
+                          //   child: Row(
+                          //     children: [
+                          //       Padding(
+                          //         padding: EdgeInsets.only(top: 1.v),
+                          //         child: Text(
+                          //           "msg_salary_componets2".tr,
+                          //           style: theme.textTheme.bodyMedium,
+                          //         ),
+                          //       ),
+                          //       Padding(
+                          //         padding: EdgeInsets.only(left: 5.h),
+                          //         child: Text(
+                          //           loginController.fetchdata.value.data!
+                          //               .tablerow![index].salaryComponent
+                          //               .toString(),
+                          //           style: theme.textTheme.bodyMedium,
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          // SizedBox(height: 21.v),
+                          // Align(
+                          //   alignment: Alignment.center,
+                          //   child: Container(
+                          //     margin: EdgeInsets.symmetric(horizontal: 72.h),
+                          //     padding: EdgeInsets.symmetric(
+                          //       horizontal: 10.h,
+                          //       vertical: 13.v,
+                          //     ),
+                          //     decoration: AppDecoration.outlinePrimary1.copyWith(
+                          //       borderRadius: BorderRadiusStyle.roundedBorder10,
+                          //     ),
+                          //     child: Column(
+                          //       mainAxisSize: MainAxisSize.min,
+                          //       crossAxisAlignment: CrossAxisAlignment.start,
+                          //       mainAxisAlignment: MainAxisAlignment.center,
+                          //       children: [
+                          //         Text(
+                          //           "lbl_total_salary".tr,
+                          //           style: CustomTextStyles
+                          //               .titleMediumPrimaryContainer,
+                          //         ),
+                          //         Padding(
+                          //           padding: EdgeInsets.only(left: 6.h),
+                          //           child: Text(
+                          //             loginController
+                          //                 .fetchdata.value.data!.totalSalary
+                          //                 .toString(),
+                          //             style: CustomTextStyles
+                          //                 .titleMediumPrimaryContainer,
+                          //           ),
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
+                          SizedBox(height: 3.v),
+                        ],
+                      ),
                     ),
                   ),
                 ),

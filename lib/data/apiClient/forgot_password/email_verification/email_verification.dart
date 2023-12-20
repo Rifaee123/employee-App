@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:muhammad_s_application3/data/models/forgot_password_email_verification/forgot_password_email_verification.dart';
+import 'package:muhammad_s_application3/routes/app_routes.dart';
 
 class ForgotPasswordOtpController extends GetxController {
   var apiResponse = ForgotPasswordEmailVerification();
@@ -28,6 +29,7 @@ class ForgotPasswordOtpController extends GetxController {
         if (apiResponse.success == true) {
           isOtpSend.value = true;
         }
+        Get.offNamed(AppRoutes.forgotPasswordPage);
       } else {
         throw Exception('Failed to load data');
       }

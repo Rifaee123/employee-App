@@ -100,14 +100,9 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         SizedBox(height: 25.v),
                         CustomElevatedButton(
                           onPressed: () async {
-                            await otpController
-                                .sendOtp(
-                                    email: otpController
-                                        .emailController.value.text
-                                        .trim())
-                                .then((value) {
-                              Get.offNamed(AppRoutes.forgotPasswordPage);
-                            });
+                            await otpController.sendOtp(
+                                email: otpController.emailController.value.text
+                                    .trim());
                           },
                           height: 41.v,
                           width: 147.h,

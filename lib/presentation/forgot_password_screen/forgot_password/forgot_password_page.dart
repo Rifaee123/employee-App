@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:muhammad_s_application3/core/app_export.dart';
+import 'package:muhammad_s_application3/presentation/forgot_password_screen/controller/forgot_password_page_controller.dart';
 import 'package:muhammad_s_application3/presentation/forgot_password_screen/controller/otp_verification_controller.dart';
 import 'package:muhammad_s_application3/widgets/custom_elevated_button.dart';
 import 'package:muhammad_s_application3/widgets/custom_text_form_field.dart';
@@ -20,6 +21,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   TextEditingController otpController = TextEditingController();
   TextEditingController passController = TextEditingController();
   TextEditingController confirmController = TextEditingController();
+  ForgotPasswordpageController forgotPassController =
+      ForgotPasswordpageController();
   @override
   void initState() {
     // TODO: implement initState
@@ -149,7 +152,17 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         ),
                         SizedBox(height: 25.v),
                         CustomElevatedButton(
-                          onPressed: () async {},
+                          onPressed: () async {
+                            if (passController.text == confirmController.text) {
+                              forgotPassController.forgotPassword(
+                                  email: emailController.text,
+                                  otp: otpController.text,
+                                  newPassword: passController.text);
+                            } else {
+                              Get.snackbar(
+                                  "Passsword Not Same", "Enter Same Password");
+                            }
+                          },
                           height: 41.v,
                           width: 177.h,
                           text: "Reset Password",

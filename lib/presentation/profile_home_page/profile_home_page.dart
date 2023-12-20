@@ -333,7 +333,7 @@ class _ProfilebankpageTabContainerScreen1State
                         _buildProfileBankPageStack(imagePath),
                         SizedBox(height: 12.v),
                         SizedBox(
-                          height: 59.v,
+                          height: 89.v,
                           width: 226.h,
                           child: Stack(
                             alignment: Alignment.bottomCenter,
@@ -353,8 +353,37 @@ class _ProfilebankpageTabContainerScreen1State
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Text(
-                                  "${loginController.fetchdata.value.data!.id}",
+                                  "${loginController.fetchdata.value.data!.employeeid}",
                                   style: TextStyle(fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 60),
+                                child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 1.v),
+                                        child: Text(
+                                          "lbl_basic_salary".tr,
+                                          style: theme.textTheme.bodyLarge,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 8.h),
+                                        child: Text(
+                                          loginController
+                                              .fetchdata.value.data!.basicSalary
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
