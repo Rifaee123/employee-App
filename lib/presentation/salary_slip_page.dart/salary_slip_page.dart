@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:muhammad_s_application3/data/apiClient/salary_slip_api/salary_slip_api.dart';
+import 'package:muhammad_s_application3/presentation/pdf_preview_page/pdf_priview_page.dart';
 import 'package:muhammad_s_application3/presentation/salary_slip_page.dart/controller/salary_page_controller.dart';
 
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class SalarySlipPage extends StatefulWidget {
 class _SalarySlipPageState extends State<SalarySlipPage> {
   SalaryPageController controller = Get.put(SalaryPageController());
   PayslipController payslipcontroller = Get.put(PayslipController());
+  final PdfController pdfController = Get.put(PdfController());
 
   @override
   Widget build(BuildContext context) {
@@ -648,14 +650,19 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                                                 MaterialStatePropertyAll(
                                                     Color(0xff9356a0))),
                                         onPressed: () async {
-                                          final pdfBytes =
-                                              await PdfGenerator.generatePdf(
-                                                  payslipcontroller
-                                                      .salarySlipresponse
-                                                      .value
-                                                      .data!);
-                                          log(pdfBytes.toString());
-                                          PdfGenerator.openFile(pdfBytes);
+                                          pdfController.generateAndPreviewPdf(
+                                              payslipcontroller
+                                                  .salarySlipresponse
+                                                  .value
+                                                  .data!);
+                                          // Navigator.of(context)
+                                          //     .push(MaterialPageRoute(
+                                          //   builder: (context) =>
+                                          //       PrintingScreen(
+                                          //         ),
+                                          // ));
+
+                                          // PdfGenerator.openFile(pdfBytes);
                                         },
                                         child: Row(
                                           mainAxisAlignment:
