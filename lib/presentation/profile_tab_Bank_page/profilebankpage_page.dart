@@ -47,18 +47,18 @@ class ProfilebankpagePage extends StatelessWidget {
                           children: [
                             Padding(
                               padding: EdgeInsets.only(bottom: 1.v),
-                              child: Text(
-                                "lbl_bank".tr,
-                                style: theme.textTheme.bodyMedium,
+                              child: SizedBox(
+                                width: 80.h,
+                                child: Text(
+                                  "lbl_bank".tr,
+                                  style: theme.textTheme.bodyMedium,
+                                ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 8.h),
-                              child: Text(
-                                loginController.fetchdata.value.data!.bank
-                                    .toString(),
-                                style: theme.textTheme.bodyMedium,
-                              ),
+                            Text(
+                              loginController.fetchdata.value.data!.bank
+                                  .toString(),
+                              style: theme.textTheme.bodyMedium,
                             ),
                           ],
                         ),
@@ -66,18 +66,17 @@ class ProfilebankpagePage extends StatelessWidget {
                       SizedBox(height: 7.v),
                       Row(
                         children: [
-                          Text(
-                            "lbl_acc_no".tr,
-                            style: theme.textTheme.bodyMedium,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 8.h),
+                          SizedBox(
+                            width: 80.h,
                             child: Text(
-                              loginController
-                                  .fetchdata.value.data!.accountNumber
-                                  .toString(),
+                              "lbl_acc_no".tr,
                               style: theme.textTheme.bodyMedium,
                             ),
+                          ),
+                          Text(
+                            loginController.fetchdata.value.data!.accountNumber
+                                .toString(),
+                            style: theme.textTheme.bodyMedium,
                           ),
                         ],
                       ),
@@ -86,17 +85,17 @@ class ProfilebankpagePage extends StatelessWidget {
                         padding: EdgeInsets.only(right: 45.h),
                         child: Row(
                           children: [
-                            Text(
-                              "lbl_ifse_no".tr,
-                              style: theme.textTheme.bodyMedium,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 4.h),
+                            SizedBox(
+                              width: 80.h,
                               child: Text(
-                                loginController.fetchdata.value.data!.bank
-                                    .toString(),
+                                "lbl_ifse_no".tr,
                                 style: theme.textTheme.bodyMedium,
                               ),
+                            ),
+                            Text(
+                              loginController.fetchdata.value.data!.bank
+                                  .toString(),
+                              style: theme.textTheme.bodyMedium,
                             ),
                           ],
                         ),
@@ -137,19 +136,19 @@ class ProfilebankpagePage extends StatelessWidget {
   }) {
     return Row(
       children: [
-        Text(
-          panNo,
-          style: theme.textTheme.bodyMedium!.copyWith(
-            color: appTheme.gray60003,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(left: 8.h),
+        SizedBox(
+          width: 80.h,
           child: Text(
-            oops,
+            panNo,
             style: theme.textTheme.bodyMedium!.copyWith(
               color: appTheme.gray60003,
             ),
+          ),
+        ),
+        Text(
+          oops,
+          style: theme.textTheme.bodyMedium!.copyWith(
+            color: appTheme.gray60003,
           ),
         ),
       ],

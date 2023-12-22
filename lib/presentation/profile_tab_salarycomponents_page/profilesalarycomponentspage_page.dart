@@ -495,7 +495,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Padding(
                                   padding: EdgeInsets.only(top: 1.v),
                                   child: Text(
-                                    "msg_percentage_value".tr,
+                                    "${tablerow[index].salaryComponent.toString()} :",
                                     style: theme.textTheme.bodyMedium,
                                   ),
                                 ),

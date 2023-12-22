@@ -358,7 +358,7 @@ class _ProfilebankpageTabContainerScreen1State
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 60),
+                                padding: EdgeInsets.only(bottom: 60.v),
                                 child: Align(
                                   alignment: Alignment.bottomCenter,
                                   child: Row(

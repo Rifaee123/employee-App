@@ -137,8 +137,8 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                             controller.selectMonthAndYear(context);
                           },
                           child: Container(
-                            width: 160.adaptSize,
-                            height: 56.adaptSize,
+                            width: 160.h,
+                            height: 56.v,
                             decoration: BoxDecoration(
                                 color: Color(0x479356a0),
                                 borderRadius:
@@ -155,8 +155,8 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                           width: 10,
                         ),
                         Container(
-                          width: 160.adaptSize,
-                          height: 56.adaptSize,
+                          width: 160.h,
+                          height: 56.v,
                           decoration: BoxDecoration(
                               color: Color(0x479356a0),
                               borderRadius:
@@ -174,7 +174,7 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                       height: 10,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 160),
+                      padding: EdgeInsets.only(left: 168.h),
                       child: InkWell(
                         onTap: () {
                           controller.salaryReport(
@@ -182,8 +182,8 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                               year: controller.selectedDate.value.year);
                         },
                         child: Container(
-                          width: 172.adaptSize,
-                          height: 56.adaptSize,
+                          width: 160.h,
+                          height: 56.v,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
                               color: Color(0xff9356a0)),
@@ -204,15 +204,15 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 10,
+                                  height: 10.v,
                                 ),
                                 payslipcontroller.isLoading.value == true
                                     ? Center(
                                         child: CircularProgressIndicator(),
                                       )
                                     : Container(
-                                        width: 328.adaptSize,
-                                        height: 190.adaptSize,
+                                        width: 328.h,
+                                        height: 190.v,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(10),
@@ -227,7 +227,7 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                                         child: Column(
                                           children: [
                                             SizedBox(
-                                              height: 10,
+                                              height: 10.v,
                                             ),
                                             Padding(
                                               padding: EdgeInsets.symmetric(
@@ -274,13 +274,13 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                                                   ),
                                                   Image.asset(
                                                     'assets/images/cardsalary.png',
-                                                    height: 70,
+                                                    height: 70.v,
                                                   )
                                                 ],
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 10,
+                                              height: 10.v,
                                             ),
                                             Padding(
                                               padding: EdgeInsets.symmetric(
@@ -318,13 +318,13 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                                         ),
                                       ),
                                 SizedBox(
-                                  height: 10,
+                                  height: 10.v,
                                 ),
                                 Row(
                                   children: [
                                     Container(
-                                      width: 160,
-                                      height: 133,
+                                      width: 160.h,
+                                      height: 133.v,
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10),
@@ -363,8 +363,8 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                                       width: 10,
                                     ),
                                     Container(
-                                      width: 160,
-                                      height: 133,
+                                      width: 160.h,
+                                      height: 133.v,
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10),
@@ -405,7 +405,7 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                                   height: 10,
                                 ),
                                 Container(
-                                  width: 330,
+                                  width: 330.h,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: Color(0x2681d762)),
@@ -555,7 +555,7 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                                   height: 10,
                                 ),
                                 Container(
-                                  width: 330,
+                                  width: 330.h,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: Color(0x26d76262)),
@@ -642,8 +642,8 @@ class _SalarySlipPageState extends State<SalarySlipPage> {
                                 ),
                                 Center(
                                   child: SizedBox(
-                                    height: 50,
-                                    width: 225,
+                                    height: 50.v,
+                                    width: 225.h,
                                     child: ElevatedButton(
                                         style: ButtonStyle(
                                             backgroundColor:

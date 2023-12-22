@@ -1,11 +1,9 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:muhammad_s_application3/presentation/salary_slip_page.dart/models/pdf_model.dart';
-import 'package:open_file/open_file.dart';
-import 'package:path_provider/path_provider.dart';
+
 import 'package:muhammad_s_application3/core/app_export.dart';
 import 'package:muhammad_s_application3/data/apiClient/login_api/login_controller.dart';
 import 'package:muhammad_s_application3/data/apiClient/salary_slip_api/salary_slip_api.dart';
@@ -84,35 +82,35 @@ class PdfGenerator {
     return pdf.save();
   }
 
-  static pw.Widget _buildPdfContent(pw.Context context,Data payslipData) {
+  static pw.Widget _buildPdfContent(pw.Context context, Data payslipData) {
     return pw.Column(
       crossAxisAlignment: pw.CrossAxisAlignment.start,
       children: [
         pw.Column(
-      crossAxisAlignment: pw.CrossAxisAlignment.start,
-       children: [
-        pw.Text('Name: ${payslipData.name}'),
-        pw.Text('Designation: ${payslipData.designation}'),
-        pw.Text('Earnings: ${payslipData.earnings}'),
-        pw.Text('Deductions: ${payslipData.deductions}'),
-        pw.Text('Basic Pay: ${payslipData.basicpay}'),
-        pw.Text('Net Pay: ${payslipData.netpay}'),
-        pw.SizedBox(height: 20),
-        pw.Text('Table Rows:'),
-        pw.ListView.builder(
-          itemCount: payslipData.tablerow!.length,
-          itemBuilder: (context, index) {
-            final rowItem = payslipData.tablerow![index];
-            return pw.Column(
-              children: [
-                pw.Text('ID: ${rowItem.id}'),
-                pw.Text('Price: ${rowItem.price}'),
-              ],
-            );
-          },
-        ),
-      ],
-    )
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: [
+            pw.Text('Name: ${payslipData.name}'),
+            pw.Text('Designation: ${payslipData.designation}'),
+            pw.Text('Earnings: ${payslipData.earnings}'),
+            pw.Text('Deductions: ${payslipData.deductions}'),
+            pw.Text('Basic Pay: ${payslipData.basicpay}'),
+            pw.Text('Net Pay: ${payslipData.netpay}'),
+            pw.SizedBox(height: 20),
+            pw.Text('Table Rows:'),
+            pw.ListView.builder(
+              itemCount: payslipData.tablerow!.length,
+              itemBuilder: (context, index) {
+                final rowItem = payslipData.tablerow![index];
+                return pw.Column(
+                  children: [
+                    pw.Text('ID: ${rowItem.id}'),
+                    pw.Text('Price: ${rowItem.price}'),
+                  ],
+                );
+              },
+            ),
+          ],
+        )
       ],
     );
   }
@@ -173,30 +171,30 @@ class PdfController extends GetxController {
 //   }
 
 //   static pw.Widget _buildPdfContent(pw.Context context, Data payslipData) {
-    // return pw.Column(
-    //   crossAxisAlignment: pw.CrossAxisAlignment.start,
-    //    children: [
-    //     pw.Text('Name: ${payslipData.name}'),
-    //     pw.Text('Designation: ${payslipData.designation}'),
-    //     pw.Text('Earnings: ${payslipData.earnings}'),
-    //     pw.Text('Deductions: ${payslipData.deductions}'),
-    //     pw.Text('Basic Pay: ${payslipData.basicpay}'),
-    //     pw.Text('Net Pay: ${payslipData.netpay}'),
-    //     pw.SizedBox(height: 20),
-    //     pw.Text('Table Rows:'),
-    //     pw.ListView.builder(
-    //       itemCount: payslipData.tablerow!.length,
-    //       itemBuilder: (context, index) {
-    //         final rowItem = payslipData.tablerow![index];
-    //         return pw.Column(
-    //           children: [
-    //             pw.Text('ID: ${rowItem.id}'),
-    //             pw.Text('Price: ${rowItem.price}'),
-    //           ],
-    //         );
-    //       },
-    //     ),
-    //   ],
-    // );
+//     return pw.Column(
+//       crossAxisAlignment: pw.CrossAxisAlignment.start,
+//        children: [
+//         pw.Text('Name: ${payslipData.name}'),
+//         pw.Text('Designation: ${payslipData.designation}'),
+//         pw.Text('Earnings: ${payslipData.earnings}'),
+//         pw.Text('Deductions: ${payslipData.deductions}'),
+//         pw.Text('Basic Pay: ${payslipData.basicpay}'),
+//         pw.Text('Net Pay: ${payslipData.netpay}'),
+//         pw.SizedBox(height: 20),
+//         pw.Text('Table Rows:'),
+//         pw.ListView.builder(
+//           itemCount: payslipData.tablerow!.length,
+//           itemBuilder: (context, index) {
+//             final rowItem = payslipData.tablerow![index];
+//             return pw.Column(
+//               children: [
+//                 pw.Text('ID: ${rowItem.id}'),
+//                 pw.Text('Price: ${rowItem.price}'),
+//               ],
+//             );
+//           },
+//         ),
+//       ],
+//     );
 //   }
 // }
