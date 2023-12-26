@@ -1,18 +1,12 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
 import 'package:muhammad_s_application3/presentation/salary_slip_page.dart/models/pdf_model.dart';
-
 import 'package:muhammad_s_application3/core/app_export.dart';
 import 'package:muhammad_s_application3/data/apiClient/login_api/login_controller.dart';
 import 'package:muhammad_s_application3/data/apiClient/salary_slip_api/salary_slip_api.dart';
 import 'package:muhammad_s_application3/data/models/salary_slip_response/data.dart';
-import 'package:pdf/widgets.dart';
 import 'package:printing/printing.dart';
-
 import '../../../data/models/salary_slip_response/tablerow.dart';
-
 import 'dart:typed_data';
 import 'package:pdf/widgets.dart' as pw;
 
@@ -132,9 +126,9 @@ class PdfController extends GetxController {
       loading(false);
     }
   }
-
+/////hai
   Future<void> _previewPdf(Uint8List pdfBytes) async {
-    await Printing.sharePdf(bytes: pdfBytes, filename: 'output.pdf');
+    await Printing.sharePdf(bytes: pdfBytes, filename: 'SalaryReport.pdf');
   }
 }
 
