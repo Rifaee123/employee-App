@@ -2,16 +2,12 @@ import 'dart:io';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:muhammad_s_application3/core/app_export.dart';
-import 'package:muhammad_s_application3/data/apiClient/get_userdata/get_userdata.dart';
 import 'package:muhammad_s_application3/data/apiClient/image_upload_api/image_upload_api.dart';
 import 'package:muhammad_s_application3/data/apiClient/login_api/login_controller.dart';
 import 'package:muhammad_s_application3/presentation/profile_home_page/models/profilebankpage_tab_container_model.dart';
 import 'package:flutter/material.dart';
 
-/// A controller class for the ProfilebankpageTabContainerScreen.
-///
-/// This class manages the state of the ProfilebankpageTabContainerScreen, including the
-/// current profilebankpageTabContainerModelObj
+
 class ProfilebankpageTabContainerController extends GetxController
     with GetSingleTickerProviderStateMixin {
   Rx<ProfilebankpageTabContainerModel> profilebankpageTabContainerModelObj =
